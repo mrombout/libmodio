@@ -1,0 +1,59 @@
+@startuml
+
+title Module Model
+
+class Sample {
+    +std::string name()
+    +int length()
+    +int volume()
+    +int repeatStart()
+    +int repeatLength()
+}
+
+class Module *-- Sequence
+class Module *-- "15" Sample
+class Module {
+    std::string name()
+    std::string signature()
+}
+
+class Sequence *-- "128" Pattern
+class Sequence {
+    void addPattern(Pattern pattern)
+    void removePattern(Pattern pattern)
+    
+    int length()
+}
+
+class Pattern *-- "4" Channel
+class Pattern {
+    
+}
+
+class Channel *-- "64" Division
+class Channel {
+
+}
+
+class Division *-- Note
+class Division *-- Effect
+class Division {
+    Note note()
+    Sample sample()
+    int volume()
+    Effect effect()
+}
+
+class Note {
+    int note()
+    int octave()
+}
+
+class Effect {
+    std::string name()
+}
+
+hide empty fields
+hide empty methods
+
+@enduml

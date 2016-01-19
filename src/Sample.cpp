@@ -1,3 +1,4 @@
+#include <c++/stdexcept>
 #include "Sample.h"
 
 namespace modio {
@@ -32,11 +33,17 @@ namespace modio {
         return mName;
     }
 
+    void Sample::resize(unsigned int length) {
+        mData.resize(length);
+    }
+
     unsigned int Sample::length() const {
-        return mLength;
+        return mData.size();
     }
 
     void Sample::setVolume(unsigned int volume) {
+        if(volume > 64)
+            throw std::invalid_argument("Volume must not be larger than 64.");
         mVolume = volume;
     }
 
@@ -45,6 +52,9 @@ namespace modio {
     }
 
     void Sample::setRepeatStart(unsigned int repeatStart) {
+        // TODO: OpenMPT seems to enforce that start my not exceed (length - 16)
+        if(repeatStart > length())
+            throw std::invalid_argument("Repeat start must not be larger than sample length(" + std::to_string(length()) + ").");
         mRepeatStart = repeatStart;
     }
 
@@ -53,6 +63,9 @@ namespace modio {
     }
 
     void Sample::setRepeatLength(unsigned int repeatLength) {
+        // TODO: OpenMPT seems to enforce that length my not exceed (start + 16)
+        if(repeatLength - 1 > length())
+            throw std::invalid_argument("Repeat length must not be larger than sample length(" + std::to_string(length()) + ").");
         mRepeatLength = repeatLength;
     }
 

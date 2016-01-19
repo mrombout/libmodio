@@ -3,27 +3,27 @@
 
 #include "Sample.h"
 #include "Effect.h"
-#include "Note.h"
+#include "Period.h"
 
 namespace modio {
     class Division {
     public:
-        void set(const Note &note, Sample &sample);
-        void set(const Note &note, Sample &sample, Effect effect);
+        void set(const Period &period, unsigned int sampleIndex);
+        void set(const Period &period, unsigned int sampleIndex, const Effect effect);
 
-        const Note &note() const;
-        void setNote(Note note);
+        const Period &period() const;
+        void setPeriod(Period period);
 
-        const Sample &sample() const;
-        void setSample(Sample &sample);
+        unsigned int sampleIndex() const;
+        void setSampleIndex(unsigned int sampleIndex);
 
         const Effect &effect() const;
-        void setEffect(Effect &effect);
+        void setEffect(const Effect &effect);
 
     private:
-        Note mNote;
-        Sample mSample;
-        Effect mEffect;
+        Period mPeriod;
+        unsigned int mSampleIndex;
+        const Effect *mEffect;
     };
 }
 

@@ -1,37 +1,37 @@
 #include "Division.h"
 
 namespace modio {
-    void Division::set(const Note &note, Sample &sample) {
-        set(note, sample, Effect());
+    void Division::set(const Period &period, unsigned int sampleIndex) {
+        set(period, sampleIndex, Effect());
     }
 
-    void Division::set(const Note &note, Sample &sample, Effect effect) {
-        setNote(note);
-        setSample(sample);
+    void Division::set(const Period &period, unsigned int sampleIndex, const Effect effect) {
+        setPeriod(period);
+        setSampleIndex(sampleIndex);
         setEffect(effect);
     }
 
-    const Note &Division::note() const {
-        return mNote;
+    const Period &Division::period() const {
+        return mPeriod;
     }
 
-    void Division::setNote(Note note) {
-        mNote = note;
+    void Division::setPeriod(Period period) {
+        mPeriod = period;
     }
 
-    const Sample &Division::sample() const {
-        return mSample;
+    unsigned int Division::sampleIndex() const {
+        return mSampleIndex;
     }
 
-    void Division::setSample(Sample &sample) {
-        mSample = sample;
+    void Division::setSampleIndex(unsigned int sampleIndex) {
+        mSampleIndex = sampleIndex;
     }
 
     const Effect &Division::effect() const {
-        return mEffect;
+        return *mEffect;
     }
 
-    void Division::setEffect(Effect &effect) {
-        mEffect = effect;
+    void Division::setEffect(const Effect &effect) {
+        mEffect = &effect;
     }
 }

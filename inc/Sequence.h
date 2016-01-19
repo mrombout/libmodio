@@ -1,13 +1,21 @@
 #ifndef LIBMODIO_SEQUENCE_H
 #define LIBMODIO_SEQUENCE_H
 
+#include <vector>
+
 namespace modio {
     class Sequence {
     public:
-        void addPattern();
-        void removePattern();
-
         unsigned int length() const;
+        void setLength(unsigned int length);
+
+        void set(unsigned int orderIndex, unsigned int patternIndex);
+        unsigned int get(unsigned int orderIndex);
+
+    private:
+        unsigned int mLength;
+
+        std::vector<unsigned int> mOrder;
     };
 }
 

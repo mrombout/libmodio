@@ -5,11 +5,15 @@ namespace modio {
     class Effect {
     public:
         Effect();
-        Effect(unsigned int effect, unsigned int param1);
+        Effect(unsigned int effect);
+        Effect(unsigned int effect, unsigned int param);
         Effect(unsigned int effect, unsigned int param1, unsigned int param2);
 
         unsigned int effect() const;
         void setEffect(unsigned int effect);
+
+        unsigned int param() const;
+        void setParam(unsigned int param);
 
         unsigned int param1() const;
         void setParam1(unsigned int param1);
@@ -19,8 +23,6 @@ namespace modio {
 
     private:
         unsigned int mEffect;
-        unsigned int mParam1;
-        unsigned int mParam2;
     };
 }
 

@@ -1,5 +1,7 @@
 # testing
 set(TEST_FILES
+    reader/ModReaderTest.cpp
+    writer/ModWriterTest.cpp
     ChannelTest.cpp
     DivisionTest.cpp
     EffectTest.cpp

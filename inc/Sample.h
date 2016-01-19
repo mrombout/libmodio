@@ -2,6 +2,7 @@
 #define LIBMODIO_SAMPLE_H
 
 #include <string>
+#include <vector>
 
 namespace modio {
     class Sample {
@@ -14,6 +15,7 @@ namespace modio {
         void setName(const std::string &name);
         const std::string &name() const;
 
+        void resize(unsigned int length);
         unsigned int length() const;
 
         void setVolume(unsigned int volume);
@@ -28,13 +30,12 @@ namespace modio {
     private:
         std::string mName;
 
-        unsigned int mLength; // TODO: Should get from actual sample data
         unsigned int mVolume;
 
         unsigned int mRepeatStart;
         unsigned int mRepeatLength;
 
-        char mData[];
+        std::vector<char> mData;
     };
 }
 

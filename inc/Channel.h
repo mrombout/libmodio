@@ -3,15 +3,17 @@
 
 #include <vector>
 #include "Division.h"
-#include "Note.h"
+#include "Period.h"
 #include "Sample.h"
 #include "Effect.h"
 
 namespace modio {
     class Channel {
     public:
-        void set(unsigned int division, const Note &note, Sample &sample);
-        void set(unsigned int division, const Note &note, Sample &sample, Effect effect);
+        Channel();
+
+        void set(unsigned int division, const Period &period, unsigned int sampleIndex);
+        void set(unsigned int division, const Period &period, unsigned int sampleIndex, const Effect effect);
 
     private:
         std::vector<Division> mDivisions;

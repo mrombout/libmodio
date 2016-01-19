@@ -2,14 +2,18 @@
 #include "Effect.h"
 
 namespace modio {
-    Effect::Effect() :
-        Effect(0, 0, 0) {
+    Effect::Effect() {
 
     }
 
-    Effect::Effect(unsigned int effect, unsigned int param1) {
+    Effect::Effect(unsigned int effect) :
+        mEffect(effect) {
+
+    }
+
+    Effect::Effect(unsigned int effect, unsigned int param) {
         setEffect(effect);
-        setParam1(param1);
+        setParam(param);
     }
 
     Effect::Effect(unsigned int effect, unsigned int param1, unsigned int param2) {
@@ -23,28 +27,30 @@ namespace modio {
     }
 
     void Effect::setEffect(unsigned int effect) {
-        if(effect > 0xFFF)
-            throw std::invalid_argument("Effect number must not be larger than 4096.");
         mEffect = effect;
     }
 
+    unsigned int Effect::param() const {
+        return (mEffect & 0x0FF);
+    }
+
+    void Effect::setParam(unsigned int param) {
+        // TODO: Set last 2 bytes of mEffect
+    }
+
     unsigned int Effect::param1() const {
-        return mParam1;
+        return (mEffect & 0x0F0) >> 4;
     }
 
     void Effect::setParam1(unsigned int param1) {
-        if(param1 > 0xFF)
-            throw std::invalid_argument("Parameter 1 must not be larger than 255.");
-        mParam1 = param1;
+        // TODO: Set middle byte of mEffect
     }
 
     unsigned int Effect::param2() const {
-        return mParam2;
+        return (mEffect & 0x00F);
     }
 
     void Effect::setParam2(unsigned int param2) {
-        if(param2 > 0xF)
-            throw std::invalid_argument("Parameter 2 must not be larger than 15.");
-        mParam2 = param2;
+        // TODO: Set last byte of mEffect
     }
 }

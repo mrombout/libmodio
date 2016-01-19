@@ -6,7 +6,10 @@
 namespace modio {
     class ModReader : public ModuleReader {
     public:
-        virtual void read() const;
+        virtual Module read(std::istream &in) const;
+
+    private:
+        std::string readString(std::istream &in, int size) const;
     };
 }
 

@@ -31,8 +31,8 @@ set(SOURCE_FILES
     inc/Module.h
     src/Module.cpp
 
-    inc/Note.h
-    src/Note.cpp
+    inc/Period.h
+    src/Period.cpp
 
     inc/Pattern.h
     src/Pattern.cpp
@@ -44,6 +44,9 @@ set(SOURCE_FILES
     src/Sequence.cpp
 
     src/examples/create_module.cpp
+    src/examples/generate_module.cpp
+    src/examples/load_module.cpp
+    src/examples/rewrite_module.cpp
 )
 
 # library

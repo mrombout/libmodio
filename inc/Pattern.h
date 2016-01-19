@@ -2,7 +2,7 @@
 #define LIBMODIO_PATTERN_H
 
 #include <vector>
-#include "Note.h"
+#include "Period.h"
 #include "Sample.h"
 #include "Effect.h"
 #include "Channel.h"
@@ -10,8 +10,11 @@
 namespace modio {
     class Pattern {
     public:
-        void set(unsigned int channel, unsigned int division, const Note &note, Sample &sample);
-        void set(unsigned int channel, unsigned int division, const Note &note, Sample &sample, Effect effect);
+        Pattern();
+        Pattern(unsigned int channelCount);
+
+        void set(unsigned int channel, unsigned int division, const Period &period, unsigned int sampleIndex);
+        void set(unsigned int channel, unsigned int division, const Period &period, unsigned int sampleIndex, const Effect effect);
 
         const Channel &channel(unsigned int channelIndex) const;
 
@@ -19,6 +22,7 @@ namespace modio {
         Channel &channel(unsigned int channelIndex);
 
     private:
+        unsigned int mChannelCount;
         std::vector<Channel> mChannels;
     };
 }

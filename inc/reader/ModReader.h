@@ -9,7 +9,14 @@ namespace modio {
         virtual Module read(std::istream &in) const;
 
     private:
+        void readSampleHeaders(std::istream &in, Module &module) const;
+        void readSampleHeader(std::istream &in, Sample &sample) const;
+
+        void readPatterns(std::istream &in, Module &module, int numPatterns) const;
+        void readChannels(std::istream &in, Pattern &pattern, unsigned int channelCount) const;
+
         std::string readString(std::istream &in, int size) const;
+        unsigned int readBigEndian(std::istream &in, int size) const;
     };
 }
 

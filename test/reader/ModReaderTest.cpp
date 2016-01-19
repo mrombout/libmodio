@@ -95,7 +95,30 @@ TEST_F(ModReaderTest, read_SamplesNonsequential_ReadsAllSamples) {
     }
 }
 
-TEST_F(ModReaderTest, read_PatternSizeOfOne_ReadsAllSamples) {
+TEST_F(ModReaderTest, read_PatternSizeOfOne_ReadsAllPatterns) {
+    // arrange
+    std::ifstream in{"res/modules/simple_title_and_name.mod", std::ios::in | std::ios::binary};
+
+    // act
+    module = moduleReader.read(in);
+
+    // assert
+    ASSERT_EQ(1, module.patterns().size());
+    // TODO: Verify first pattern is correct
+}
+
+TEST_F(ModReaderTest, read_PatternSizeOfSix_ReadsAllPatterns) {
+    // arrange
+    std::ifstream in{"res/modules/sequence_123454321.mod", std::ios::in | std::ios::binary};
+
+    // act
+    module = moduleReader.read(in);
+
+    // assert
+    ASSERT_EQ(6, module.patterns().size());
+}
+
+TEST_F(ModReaderTest, read_SequenceSizeOfOne_ReadsAllSamples) {
     // arrange
     std::ifstream in{"res/modules/simple_title_and_name.mod", std::ios::in | std::ios::binary};
 
@@ -107,7 +130,7 @@ TEST_F(ModReaderTest, read_PatternSizeOfOne_ReadsAllSamples) {
     EXPECT_EQ(0, module.get(0));
 }
 
-TEST_F(ModReaderTest, read_PatternSizeOfEleven_ReadsAllSamples) {
+TEST_F(ModReaderTest, read_SequenceSizeOfEleven_ReadsAllSamples) {
     // arrange
     std::ifstream in{"res/modules/sequence_123454321.mod", std::ios::in | std::ios::binary};
 
@@ -122,7 +145,7 @@ TEST_F(ModReaderTest, read_PatternSizeOfEleven_ReadsAllSamples) {
     }
 }
 
-TEST_F(ModReaderTest, read_PatternSizeExceedsModuleLength_ThrowsException) {
+TEST_F(ModReaderTest, read_SequenceSizeExceedsModuleLength_ThrowsException) {
     // arrange
     std::ifstream in{"res/modules/simple_title_and_name.mod", std::ios::in | std::ios::binary};
 

@@ -28,8 +28,7 @@ namespace modio {
 
     const Channel &Pattern::channel(unsigned int channelIndex) const {
         if(mNumChannels && channelIndex > mNumChannels)
-            throw std::invalid_argument("Channel index '" + std::to_string(channelIndex) + " may not exceed '" + std::to_string(
-                    mNumChannels) + "'.");
+            throw std::invalid_argument("Channel index '" + std::to_string(channelIndex) + " may not exceed '" + std::to_string(mNumChannels) + "'.");
         return mChannels[channelIndex];
     }
 

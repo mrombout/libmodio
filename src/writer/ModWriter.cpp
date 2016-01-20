@@ -111,7 +111,7 @@ namespace modio {
                 cell |= sampleIndexPart2 << 12;
 
                 // effect
-                unsigned int effectData = division.effect().effect();
+                unsigned int effectData = division.effect().raw();
                 cell |= effectData;
 
                 // (4 bytes) writes cell

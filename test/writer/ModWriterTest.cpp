@@ -218,7 +218,7 @@ TEST_F(ModWriterTest, write_FullPattern_WritesFullPattern) {
     modio::Pattern pattern;
     for(unsigned int channelIndex = 0; channelIndex < 4; ++channelIndex) {
         for(unsigned int divisionIndex = 0; divisionIndex < 64; ++divisionIndex) {
-            pattern.set(channelIndex, divisionIndex, modio::Period(300), 1, modio::Effect(0x123));
+            pattern.set(channelIndex, divisionIndex, 300, 1, modio::Effect(0x123));
         }
     }
     module.setPattern(0, pattern);

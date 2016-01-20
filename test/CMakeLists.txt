@@ -6,7 +6,7 @@ set(TEST_FILES
     DivisionTest.cpp
     EffectTest.cpp
     ModuleTest.cpp
-    NoteTest.cpp
+        PeriodTest.cpp
     PatternTest.cpp
     SampleTest.cpp
     SequenceTest.cpp

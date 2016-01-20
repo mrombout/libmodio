@@ -1,4 +1,3 @@
-#include <c++/stdexcept>
 #include "Period.h"
 
 namespace modio {
@@ -12,9 +11,9 @@ namespace modio {
 
     }
 
-    Period::Period(char note, unsigned int octave) {
-        setNote(note);
-        setPeriod(period());
+    Period::Period(int period) :
+        mPeriod(period) {
+
     }
 
     unsigned int Period::period() const {
@@ -25,21 +24,7 @@ namespace modio {
         mPeriod = period;
     }
 
-    char Period::note() const {
-        // TODO: Deduce from period
-        return '\n';
-    }
-
-    void Period::setNote(char note) {
-        // TODO: Change period to match note
-    }
-
-    unsigned int Period::octave() const {
-        // TODO: Deduce from period
-        return 0;
-    }
-
-    void Period::setOctave(unsigned int octave) {
-        // TODO: Change period to match octave
+    Period::operator int() const {
+        return mPeriod;
     }
 }

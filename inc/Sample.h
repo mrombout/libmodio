@@ -27,6 +27,9 @@ namespace modio {
         void setRepeatLength(unsigned int repeatLength);
         unsigned int repeatLength() const;
 
+        void setData(std::vector<unsigned char> data);
+        const std::vector<unsigned char> data() const;
+
     private:
         std::string mName;
 
@@ -35,7 +38,7 @@ namespace modio {
         unsigned int mRepeatStart;
         unsigned int mRepeatLength;
 
-        std::vector<char> mData;
+        std::vector<unsigned char> mData;
     };
 }
 

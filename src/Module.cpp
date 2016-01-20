@@ -8,13 +8,15 @@ namespace modio {
     }
 
     Module::Module(const std::string &name) :
-        Module("", "") {
+        Module(name, "") {
 
     }
 
     Module::Module(const std::string &name, const std::string &signature) :
         mName(name),
-        mSignature(name) {
+        mSignature(signature),
+        mSamples(31),
+        mPatterns(1) {
 
     }
 
@@ -53,7 +55,7 @@ namespace modio {
     void Module::setSample(unsigned int index, const Sample &sample) {
         if(index > 31)
             throw std::invalid_argument("Sample index '" + std::to_string(index) + "' may not exceed '31'.");
-        mSamples.insert(mSamples.begin() + index, sample);
+        mSamples.at(index) = sample;
     }
 
     const std::vector<Pattern> Module::patterns() const {
@@ -63,7 +65,13 @@ namespace modio {
     void Module::setPattern(unsigned int index, const Pattern &pattern) {
         if(index > 64)
             throw std::invalid_argument("Pattern index '" + std::to_string(index) + "' may not exceed '64'.");
-        mPatterns.insert(mPatterns.begin() + index, pattern);
+        if(index > mPatterns.size() - 1)
+            mPatterns.resize(index + 1);
+        mPatterns.at(index) = pattern;
+    }
+
+    const Sequence &Module::sequence() const {
+        return mSequence;
     }
 
     void Module::set(unsigned int orderIndex, unsigned int patternIndex) {

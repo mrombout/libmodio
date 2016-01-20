@@ -2,7 +2,8 @@
 #include "Effect.h"
 
 namespace modio {
-    Effect::Effect() {
+    Effect::Effect() :
+        mEffect(0) {
 
     }
 

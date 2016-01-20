@@ -8,6 +8,8 @@
 namespace modio {
     class Division {
     public:
+        Division();
+
         void set(const Period &period, unsigned int sampleIndex);
         void set(const Period &period, unsigned int sampleIndex, const Effect effect);
 
@@ -23,7 +25,7 @@ namespace modio {
     private:
         Period mPeriod;
         unsigned int mSampleIndex;
-        const Effect *mEffect;
+        Effect mEffect;
     };
 }
 

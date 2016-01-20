@@ -9,7 +9,7 @@ namespace modio {
 
         Module module;
 
-        // (20 bytes) read title
+        // (20 bytes) read module name
         std::string name{readString(in, 20)};
         module.setName(name);
 
@@ -42,7 +42,7 @@ namespace modio {
         // (n * 1024 bytes) read patterns
         readPatterns(in, module, highestPatternIndex + 1);
 
-        // (n * x) read samples
+        // (n * x) read sample data
         for(const Sample &sample : module.samples()) {
             if(sample.length())
                 continue;
@@ -75,7 +75,7 @@ namespace modio {
         unsigned int sampleLength{readBigEndian(in, 2)};
         sample.resize(sampleLength);
 
-        // (1 byte) finetune
+        // (1 byte) read finetune
         in.seekg(1, in.cur);
 
         // (1 byte) read sample volume
@@ -97,13 +97,13 @@ namespace modio {
         for(unsigned int i = 0; i < numPatterns; ++i) {
             Pattern pattern(channelCount);
 
-            readChannels(in, pattern, channelCount);
+            readPattern(in, pattern, channelCount);
 
             module.setPattern(i, pattern);
         }
     }
 
-    void ModReader::readChannels(std::istream &in, Pattern &pattern, unsigned int channelCount) const {
+    void ModReader::readPattern(std::istream &in, Pattern &pattern, unsigned int channelCount) const {
         for(unsigned int i = 0; i < channelCount; ++i) {
             for(unsigned int j = 0; j < 64; ++j) {
                 uint32_t cell = readBigEndian(in, 4);

@@ -15,6 +15,8 @@ namespace modio {
         void set(unsigned int division, const Period &period, unsigned int sampleIndex);
         void set(unsigned int division, const Period &period, unsigned int sampleIndex, const Effect effect);
 
+        const Division &get(unsigned int division) const;
+
     private:
         std::vector<Division> mDivisions;
     };

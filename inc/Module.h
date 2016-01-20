@@ -29,6 +29,8 @@ namespace modio {
         const std::vector<Pattern> patterns() const;
         void setPattern(unsigned int index, const Pattern &pattern);
 
+        const Sequence &sequence() const;
+
         void set(unsigned int orderIndex, unsigned int patternIndex);
         unsigned int get(unsigned int orderIndex);
 

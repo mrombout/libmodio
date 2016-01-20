@@ -6,23 +6,27 @@
 #include "Sample.h"
 #include "Effect.h"
 #include "Channel.h"
+#include "Division.h"
 
 namespace modio {
     class Pattern {
     public:
         Pattern();
-        Pattern(unsigned int channelCount);
+        Pattern(unsigned int numChannels);
 
-        void set(unsigned int channel, unsigned int division, const Period &period, unsigned int sampleIndex);
-        void set(unsigned int channel, unsigned int division, const Period &period, unsigned int sampleIndex, const Effect effect);
+        void set(unsigned int channel, unsigned int divisionIndex, const Period &period, unsigned int sampleIndex);
+        void set(unsigned int channel, unsigned int divisionIndex, const Period &period, unsigned int sampleIndex, const Effect effect);
+
+        const Division &get(unsigned int channelIndex, unsigned int divisionIndex) const;
 
         const Channel &channel(unsigned int channelIndex) const;
+        unsigned int numChannels();
 
     private:
         Channel &channel(unsigned int channelIndex);
 
     private:
-        unsigned int mChannelCount;
+        unsigned int mNumChannels;
         std::vector<Channel> mChannels;
     };
 }

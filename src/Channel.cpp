@@ -7,10 +7,14 @@ namespace modio {
     }
 
     void Channel::set(unsigned int division, const Period &period, unsigned int sampleIndex) {
-        mDivisions[division].set(period, sampleIndex);
+        mDivisions.at(division).set(period, sampleIndex);
     }
 
     void Channel::set(unsigned int division, const Period &period, unsigned int sampleIndex, const Effect effect) {
-        mDivisions[division].set(period, sampleIndex, effect);
+        mDivisions.at(division).set(period, sampleIndex, effect);
+    }
+
+    const Division &Channel::get(unsigned int division) const {
+        return mDivisions.at(division);
     }
 }

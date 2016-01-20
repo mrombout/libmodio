@@ -34,11 +34,11 @@ namespace modio {
     }
 
     void Sample::resize(unsigned int length) {
-        mData.resize(length);
+        mData.resize(length * 2);
     }
 
     unsigned int Sample::length() const {
-        return mData.size();
+        return mData.size() / 2;
     }
 
     void Sample::setVolume(unsigned int volume) {
@@ -54,7 +54,7 @@ namespace modio {
     void Sample::setRepeatStart(unsigned int repeatStart) {
         // TODO: OpenMPT seems to enforce that start my not exceed (length - 16)
         if(repeatStart > length())
-            throw std::invalid_argument("Repeat start must not be larger than sample length(" + std::to_string(length()) + ").");
+            throw std::invalid_argument("Sample repeat start (which is " + std::to_string(repeatStart) + ") must not be larger than sample length (which is " + std::to_string(length()) + ").");
         mRepeatStart = repeatStart;
     }
 
@@ -65,11 +65,19 @@ namespace modio {
     void Sample::setRepeatLength(unsigned int repeatLength) {
         // TODO: OpenMPT seems to enforce that length my not exceed (start + 16)
         if(repeatLength - 1 > length())
-            throw std::invalid_argument("Repeat length must not be larger than sample length(" + std::to_string(length()) + ").");
+            throw std::invalid_argument("Sample repeat length (which is " + std::to_string(repeatLength) + ") must not be larger than sample length (which is " + std::to_string(length()) + ").");
         mRepeatLength = repeatLength;
     }
 
     unsigned int Sample::repeatLength() const {
         return mRepeatLength;
+    }
+
+    void Sample::setData(std::vector<unsigned char> data) {
+        mData = data;
+    }
+
+    const std::vector<unsigned char> Sample::data() const {
+        return mData;
     }
 }

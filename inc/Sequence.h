@@ -6,11 +6,15 @@
 namespace modio {
     class Sequence {
     public:
+        Sequence();
+
         unsigned int length() const;
         void setLength(unsigned int length);
 
         void set(unsigned int orderIndex, unsigned int patternIndex);
         unsigned int get(unsigned int orderIndex);
+
+        const std::vector<unsigned int> order() const;
 
     private:
         unsigned int mLength;

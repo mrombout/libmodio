@@ -1,6 +1,11 @@
 #include "Division.h"
 
 namespace modio {
+    Division::Division() :
+        mSampleIndex(0) {
+
+    }
+
     void Division::set(const Period &period, unsigned int sampleIndex) {
         set(period, sampleIndex, Effect());
     }
@@ -28,10 +33,10 @@ namespace modio {
     }
 
     const Effect &Division::effect() const {
-        return *mEffect;
+        return mEffect;
     }
 
     void Division::setEffect(const Effect &effect) {
-        mEffect = &effect;
+        mEffect = effect;
     }
 }

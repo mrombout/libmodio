@@ -5,7 +5,7 @@ namespace modio {
     class Effect {
     public:
         Effect();
-        Effect(unsigned int effect);
+        explicit Effect(unsigned int effect);
         Effect(unsigned int effect, unsigned int param);
         Effect(unsigned int effect, unsigned int param1, unsigned int param2);
 

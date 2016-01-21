@@ -1,5 +1,3 @@
-#include "reader/ModReader.h"
-
 /**
  * \brief Generates a module from scratch using a simple algorithm
  *

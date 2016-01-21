@@ -1,4 +1,3 @@
-#include <c++/stdexcept>
 #include "Effect.h"
 
 namespace modio {

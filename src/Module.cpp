@@ -79,6 +79,6 @@ namespace modio {
     }
 
     unsigned int Module::get(unsigned int orderIndex) {
-        mSequence.get(orderIndex);
+        return mSequence.get(orderIndex);
     }
 }

@@ -61,7 +61,6 @@ int main() {
     os.write(songUnknown, sizeof(songUnknown));
 
     // data repeated for each pattern
-    char pattern[1024]{};
     for(int i = 0; i < 64; ++i) {
         char ch1[]{0xD6, 0x11, 0x00, 0x00};
         char ch2[]{0xBE, 0x12, 0x00, 0x00};

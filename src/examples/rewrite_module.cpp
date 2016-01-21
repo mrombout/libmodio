@@ -1,5 +1,3 @@
-#include "reader/ModReader.h"
-
 /**
  * \brief Loads the given module and writes it to the given output file
  *

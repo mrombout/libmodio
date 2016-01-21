@@ -57,7 +57,7 @@ namespace modio {
 
     void ModReader::readSampleHeaders(std::istream &in, Module &module) const {
         // TODO: Determine number of samples by signature type
-        for(int i = 0; i < 31; ++i) {
+        for(unsigned int i = 0; i < 31; ++i) {
             Sample sample;
 
             readSampleHeader(in, sample);

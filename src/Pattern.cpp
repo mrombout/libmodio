@@ -23,7 +23,7 @@ namespace modio {
     }
 
     const Division &Pattern::get(unsigned int channelIndex, unsigned int divisionIndex) const {
-        channel(channelIndex).get(divisionIndex);
+        return channel(channelIndex).get(divisionIndex);
     }
 
     const Channel &Pattern::channel(unsigned int channelIndex) const {

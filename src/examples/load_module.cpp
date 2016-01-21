@@ -1,5 +1,3 @@
-#include "reader/ModReader.h"
-
 /**
  * \brief Tries to load the given .mod file and output some information
  *

@@ -1,8 +1,3 @@
-#include "Period.h"
-#include "Pattern.h"
-#include "Sample.h"
-#include "Module.h"
-
 /**
  * \brief Creates a new module from scratch
  *

@@ -4,6 +4,9 @@
 #include "ModuleReader.h"
 
 namespace modio {
+    /**
+     * \brief Reads a '.mod' file into a Module
+     */
     class ModReader : public ModuleReader {
     public:
         virtual Module read(std::istream &in) const;

@@ -5,6 +5,9 @@
 #include "Module.h"
 
 namespace modio {
+    /**
+     * \brief Writes a module to a file
+     */
     class ModuleWriter {
     public:
         virtual ~ModuleWriter() {

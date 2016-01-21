@@ -2,6 +2,9 @@
 #define LIBMODIO_EFFECT_H
 
 namespace modio {
+    /**
+     * \brief Effect of a Division
+     */
     class Effect {
     public:
         Effect();

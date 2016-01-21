@@ -8,6 +8,9 @@
 #include "Effect.h"
 
 namespace modio {
+    /**
+     * \brief A single channel in a Pattern
+     */
     class Channel {
     public:
         Channel();

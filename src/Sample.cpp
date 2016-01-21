@@ -26,6 +26,8 @@ namespace modio {
     }
 
     void Sample::setName(const std::string &name) {
+        if(name.length() > 22)
+            throw std::invalid_argument("Sample name (which is " + name + ") may not exceed 22 characters.");
         mName = name;
     }
 
@@ -74,6 +76,8 @@ namespace modio {
     }
 
     void Sample::setData(std::vector<unsigned char> data) {
+        if(data.size() != length() * 2)
+            throw std::invalid_argument("Sample data length (which is" + std::to_string(data.size()) + ") must be exactly that of length in bytes (which is " + std::to_string(length() * 2) + ").");
         mData = data;
     }
 

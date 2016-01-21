@@ -6,6 +6,9 @@
 #include "Period.h"
 
 namespace modio {
+    /**
+     * \brief A single Division in a Channel
+     */
     class Division {
     public:
         Division();

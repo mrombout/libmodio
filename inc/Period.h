@@ -2,6 +2,11 @@
 #define LIBMODIO_PERIOD_H
 
 namespace modio {
+    /**
+     * \brief Contains all notes originally supported by the Amiga.
+     *
+     * These can directly be used when setting the period of a division.
+     */
     enum Note {
         C1  = 856,
         CS1 = 808,
@@ -43,15 +48,39 @@ namespace modio {
         B3  = 113,
     };
 
+    /**
+     * \brief Period of a Division
+     */
     class Period {
     public:
+        /**
+         * \brief Constructs a new Period
+         */
         Period();
+
+        /**
+         * \brief Constructs a new Period of the given value
+         */
         Period(unsigned int period);
+
+        /**
+         * \brief Constructs a new Period with the given signed value
+         */
         Period(int period);
 
+        /**
+         * \brief Gets the period as int
+         */
         unsigned int period() const;
+
+        /**
+         * \brief Sets the period as int
+         */
         void setPeriod(unsigned int period);
 
+        /**
+         * \brief Returns this Period represented as an int
+         */
         operator int() const;
 
     private:

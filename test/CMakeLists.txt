@@ -1,18 +1,18 @@
 # testing
 set(TEST_FILES
-    reader/ModReaderTest.cpp
-    writer/ModWriterTest.cpp
-    ChannelTest.cpp
-    DivisionTest.cpp
-    EffectTest.cpp
-    ModuleTest.cpp
-        PeriodTest.cpp
-    PatternTest.cpp
-    SampleTest.cpp
-    SequenceTest.cpp
+    unit/reader/ModReaderTest.cpp
+    unit/writer/ModWriterTest.cpp
+    unit/ChannelTest.cpp
+    unit/DivisionTest.cpp
+    unit/EffectTest.cpp
+    unit/ModuleTest.cpp
+    unit/PeriodTest.cpp
+    unit/PatternTest.cpp
+    unit/SampleTest.cpp
+    unit/SequenceTest.cpp
 )
 
-add_executable(testmodio main.cpp ${TEST_FILES})
+add_executable(testmodio unit/main.cpp ${TEST_FILES})
 target_link_libraries(testmodio
     libmodio
     gtest

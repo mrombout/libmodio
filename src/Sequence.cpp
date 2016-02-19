@@ -20,7 +20,7 @@ namespace modio {
             throw std::invalid_argument("Pattern order index '" + std::to_string(orderIndex) + "' must not exceed module length '" + std::to_string(mLength) + "'");
         if(patternIndex > 64)
             throw std::invalid_argument("Pattern order pattern index '" + std::to_string(patternIndex) + "' must not exceed '64'");
-        mOrder.insert(mOrder.begin() + orderIndex, patternIndex);
+        mOrder[orderIndex] = patternIndex;
     }
 
     unsigned int Sequence::get(unsigned int orderIndex) {

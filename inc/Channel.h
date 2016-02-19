@@ -8,6 +8,13 @@
 #include "Effect.h"
 
 namespace modio {
+    enum ChannelIndex {
+        CHANNEL1 = 0,
+        CHANNEL2 = 1,
+        CHANNEL3 = 2,
+        CHANNEL4 = 3
+    };
+
     /**
      * \brief A single channel in a Pattern
      */
@@ -19,6 +26,8 @@ namespace modio {
         void set(unsigned int division, const Period &period, unsigned int sampleIndex, const Effect effect);
 
         const Division &get(unsigned int division) const;
+
+        void clear();
 
     private:
         std::vector<Division> mDivisions;

@@ -39,4 +39,13 @@ namespace modio {
     unsigned int Pattern::numChannels() {
         return mNumChannels;
     }
+
+    void Pattern::clear() {
+        for(Channel &channel : mChannels)
+            channel.clear();
+    }
+
+    void Pattern::clear(unsigned int channelIndex) {
+        channel(channelIndex).clear();
+    }
 }

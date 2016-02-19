@@ -39,4 +39,10 @@ namespace modio {
     void Division::setEffect(const Effect &effect) {
         mEffect = effect;
     }
+
+    void Division::clear() {
+        mPeriod = 0;
+        mSampleIndex = 0;
+        mEffect = 0;
+    }
 }

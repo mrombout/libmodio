@@ -55,7 +55,7 @@ namespace modio {
     void Module::setSample(unsigned int index, const Sample &sample) {
         if(index > 31)
             throw std::invalid_argument("Sample index '" + std::to_string(index) + "' may not exceed '31'.");
-        mSamples.at(index) = sample;
+        mSamples.at(index - 1) = sample;
     }
 
     const std::vector<Pattern> Module::patterns() const {

@@ -25,6 +25,8 @@ namespace modio {
         const Effect &effect() const;
         void setEffect(const Effect &effect);
 
+        void clear();
+
     private:
         Period mPeriod;
         unsigned int mSampleIndex;

@@ -13,15 +13,16 @@ namespace modio {
     }
 
     Sample::Sample(const std::string &name, unsigned int volume) :
-            Sample(name, volume, 0, 0) {
+            Sample(name, volume, 0, 0, std::vector<unsigned char>()) {
 
     }
 
-    Sample::Sample(const std::string &name, unsigned int volume, unsigned int repeatStart, unsigned int repeatLength) :
+    Sample::Sample(const std::string &name, unsigned int volume, unsigned int repeatStart, unsigned int repeatLength, const std::vector<unsigned char> &data) :
             mName(name),
             mVolume(volume),
             mRepeatStart(repeatStart),
-            mRepeatLength(repeatLength) {
+            mRepeatLength(repeatLength),
+            mData(data) {
 
     }
 

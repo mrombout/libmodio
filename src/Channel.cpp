@@ -17,4 +17,9 @@ namespace modio {
     const Division &Channel::get(unsigned int division) const {
         return mDivisions.at(division);
     }
+
+    void Channel::clear() {
+        for(Division &division : mDivisions)
+            division.clear();
+    }
 }

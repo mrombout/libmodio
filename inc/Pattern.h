@@ -49,6 +49,9 @@ namespace modio {
          */
         unsigned int numChannels();
 
+        void clear();
+        void clear(unsigned int channelIndex);
+
     private:
         Channel &channel(unsigned int channelIndex);
 

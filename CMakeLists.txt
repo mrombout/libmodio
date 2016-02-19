@@ -42,11 +42,6 @@ set(SOURCE_FILES
 
     inc/Sequence.h
     src/Sequence.cpp
-
-    src/examples/create_module.cpp
-    src/examples/generate_module.cpp
-    src/examples/load_module.cpp
-    src/examples/rewrite_module.cpp
 )
 
 # library
@@ -59,6 +54,9 @@ target_compile_features(libmodio
         cxx_range_for
         cxx_generalized_initializers
     )
+
+# examples
+add_subdirectory(examples)
 
 # testing
 add_subdirectory(lib/googletest/googlemock)

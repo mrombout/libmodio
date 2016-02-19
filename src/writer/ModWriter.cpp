@@ -90,9 +90,9 @@ namespace modio {
     }
 
     void ModWriter::writePattern(std::ostream &out, Pattern &pattern) const {
-        for(unsigned int i = 0; i < pattern.numChannels(); ++i) {
-            for(unsigned int j = 0; j < 64; ++j) {
-                const Division &division = pattern.get(i, j);
+        for(unsigned int divisionIndex = 0; divisionIndex < 64; ++divisionIndex) {
+            for(unsigned int channelIndex = 0; channelIndex < pattern.numChannels(); ++channelIndex) {
+                const Division &division = pattern.get(channelIndex, divisionIndex);
 
                 unsigned int cell = 0;
 

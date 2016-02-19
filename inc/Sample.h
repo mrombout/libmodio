@@ -28,7 +28,7 @@ namespace modio {
         /**
          * \brief Constructs a new Sample
          */
-        Sample(const std::string &name, unsigned int volume, unsigned int repeatStart, unsigned int repeatLength);
+        Sample(const std::string &name, unsigned int volume, unsigned int repeatStart, unsigned int repeatLength, const std::vector<unsigned char> &data);
 
         /**
          * \brief Sets the name of this Sample, may not exceed 22 characters

@@ -52,7 +52,7 @@ namespace modio {
          * \throws std::invalid_argument if orderIndex exceeds sequence length
          * \param orderIndex order index to retrieve pattern index from
          */
-        unsigned int get(unsigned int orderIndex);
+        unsigned int get(unsigned int orderIndex) const;
 
         /**
          * \brief Gets the order of patterns to play

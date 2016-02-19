@@ -15,7 +15,7 @@ target_include_directories(load_module     PUBLIC ../inc)
 target_include_directories(rewrite_module  PUBLIC ../inc)
 
 target_link_libraries(create_module libmodio)
-target_link_libraries(generate_module libmodio)
+target_link_libraries(load_module libmodio)
 
 target_compile_features(create_module
     PUBLIC

@@ -57,7 +57,7 @@ namespace modio {
 
     void ModReader::readSampleHeaders(std::istream &in, Module &module) const {
         // TODO: Determine number of samples by signature type
-        for(unsigned int i = 0; i < 31; ++i) {
+        for(unsigned int i = 1; i <= 31; ++i) {
             Sample sample;
 
             readSampleHeader(in, sample);
@@ -104,8 +104,8 @@ namespace modio {
     }
 
     void ModReader::readPattern(std::istream &in, Pattern &pattern, unsigned int channelCount) const {
-        for(unsigned int i = 0; i < channelCount; ++i) {
-            for(unsigned int j = 0; j < 64; ++j) {
+        for(unsigned int j = 0; j < 64; ++j) {
+            for(unsigned int i = 0; i < channelCount; ++i) {
                 uint32_t cell = readBigEndian(in, 4);
 
                 unsigned int periodData = (cell & 0x0FFF0000) >> 20;

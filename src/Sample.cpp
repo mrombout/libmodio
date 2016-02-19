@@ -37,6 +37,9 @@ namespace modio {
     }
 
     void Sample::resize(unsigned int length) {
+        // Allegedly, a value of 0 will crash an Amiga.
+        //if(length < 1)
+            //throw std::invalid_argument("Length (which is " + std::to_string(length) + ") must be larger than 1.");
         mData.resize(length * 2);
     }
 
@@ -67,7 +70,7 @@ namespace modio {
 
     void Sample::setRepeatLength(unsigned int repeatLength) {
         // TODO: OpenMPT seems to enforce that length my not exceed (start + 16)
-        if(repeatLength - 1 > length())
+        if(repeatLength > length() + 1)
             throw std::invalid_argument("Sample repeat length (which is " + std::to_string(repeatLength) + ") must not be larger than sample length (which is " + std::to_string(length()) + ").");
         mRepeatLength = repeatLength;
     }

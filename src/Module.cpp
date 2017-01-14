@@ -52,10 +52,14 @@ namespace modio {
         return mSamples;
     }
 
-    void Module::setSample(unsigned int index, const Sample &sample) {
-        if(index > 31)
+    void Module::setSample(const unsigned int index, const Sample &sample) {
+        if(index == 0)
+            throw std::invalid_argument("Sample index '" + std::to_string(index) + "' does not exist. Sample indexes are zero-based.");
+
+        const unsigned int targetIndex = index - 1;
+        if(targetIndex > 31)
             throw std::invalid_argument("Sample index '" + std::to_string(index) + "' may not exceed '31'.");
-        mSamples.at(index - 1) = sample;
+        mSamples.at(targetIndex) = sample;
     }
 
     const std::vector<Pattern> Module::patterns() const {

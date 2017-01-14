@@ -67,32 +67,31 @@ TEST_F(ModWriterTest, write_NoSamples_WritesMaxSampleHeaders) {
 
 TEST_F(ModWriterTest, write_OneSample_WritesMaxSampleHeaders) {
     // arrange
+    modio::Sample sample{"SAMPLE01", 64, 0, 32, std::vector<unsigned char>(32, 0xFF)};
+
     modio::Module module;
-
-    modio::Sample sample{"SAMPLE01", 64, 0, 32, {32, 0xFF}};
-
-    module.setSample(0, sample);
+    module.setSample(1, sample);
 
     // act
     std::stringstream oss;
     moduleWriter.write(module, oss);
 
     // assert
-    oss.seekg(20, oss.beg);
+    oss.seekg(20, oss.beg); // skip module name
 
     for(int i = 0; i < 31; ++i) {
         oss.seekg(22, oss.cur);
 
-        char emptySample[8]{0x00, 0x10, 0x00, 0x40, 0x00, 0x00, 0x00, 0x20};
+        char emptySample[]{0x00, 0x10, 0x00, 0x40, 0x00, 0x00, 0x00, 0x20};
         for(int j = 0; j < sizeof(emptySample); ++j) {
+            auto result = oss.get();
             if (i == 0) {
-                EXPECT_EQ(emptySample[j], oss.get());
+                EXPECT_EQ(emptySample[j], result) << "Index " << j << " of output does not match default empty sample.";
             } else {
-                unsigned long r = oss.get();
                 if(j == 3) // volume defaults to 64
-                    EXPECT_EQ(0x40, r);
+                    EXPECT_EQ(0x40, result);
                 else
-                    EXPECT_EQ(0x00, r);
+                    EXPECT_EQ(0x00, result);
             }
         }
     }
@@ -100,10 +99,9 @@ TEST_F(ModWriterTest, write_OneSample_WritesMaxSampleHeaders) {
 
 TEST_F(ModWriterTest, write_TwoEmptySamplesThirdFull_WritesMaxSampleHeaders) {
     // arrange
+    modio::Sample sample{"SAMPLE03", 64, 0, 32, std::vector<unsigned char>(32, 0xFF)};
+
     modio::Module module;
-
-    modio::Sample sample{"SAMPLE03", 64, 0, 32, {32, static_cast<unsigned char>(0xFF)}};
-
     module.setSample(2, sample);
 
     // act
@@ -118,14 +116,14 @@ TEST_F(ModWriterTest, write_TwoEmptySamplesThirdFull_WritesMaxSampleHeaders) {
 
         char emptySample[8]{0x00, 0x10, 0x00, 0x40, 0x00, 0x00, 0x00, 0x20};
         for(int j = 0; j < sizeof(emptySample); ++j) {
-            if (i == 2) {
-                EXPECT_EQ(emptySample[j], oss.get());
+            auto result = oss.get();
+            if (i == 1) {
+                EXPECT_EQ(emptySample[j], result);
             } else {
-                unsigned long r = oss.get();
                 if(j == 3) // volume defaults to 64
-                    EXPECT_EQ(0x40, r);
+                    EXPECT_EQ(0x40, result);
                 else
-                    EXPECT_EQ(0x00, r);
+                    EXPECT_EQ(0x00, result);
             }
         }
     }
@@ -138,7 +136,7 @@ TEST_F(ModWriterTest, write_SampleNoName_NullPads) {
     modio::Sample sample;
     sample.setData(std::vector<unsigned char>(32, 0xFF));
 
-    module.setSample(0, sample);
+    module.setSample(1, sample);
 
     // act
     std::stringstream oss;
@@ -275,7 +273,7 @@ TEST_F(ModWriterTest, write_SampleOnlyFirstIsValid_WriteOneSampleData) {
     modio::Sample sample;
     std::vector<unsigned char> data(64, 0xFF);
     sample.setData(data);
-    module.setSample(0, sample);
+    module.setSample(1, sample);
 
     // act
     std::stringstream oss;

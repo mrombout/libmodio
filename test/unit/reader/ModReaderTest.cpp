@@ -13,7 +13,7 @@ protected:
     modio::Module module;
 };
 
-TEST_F(ModReaderTest, read_NameFull_ReadsCorrectModuleName) {
+TEST_F(ModReaderTest, DISABLED_read_NameFull_ReadsCorrectModuleName) {
     // arrange
     std::ifstream in{"res/modules/fullname.mod", std::ios::in | std::ios::binary};
 
@@ -25,7 +25,7 @@ TEST_F(ModReaderTest, read_NameFull_ReadsCorrectModuleName) {
     EXPECT_EQ("ABCDEFGHIJKLMNOPQRST", result);
 }
 
-TEST_F(ModReaderTest, read_NameHalf_ReadsCorrectModuleName) {
+TEST_F(ModReaderTest, DISABLED_read_NameHalf_ReadsCorrectModuleName) {
     // arrange
     std::ifstream in{"res/modules/halfname.mod", std::ios::in | std::ios::binary};
 
@@ -37,7 +37,7 @@ TEST_F(ModReaderTest, read_NameHalf_ReadsCorrectModuleName) {
     EXPECT_EQ("ABCDEFGHIJ", result);
 }
 
-TEST_F(ModReaderTest, read_SamplesSequential_ReadsAllSamples) {
+TEST_F(ModReaderTest, DISABLED_read_SamplesSequential_ReadsAllSamples) {
     // arrange
     std::ifstream in{"res/modules/6_samples_sequential.mod", std::ios::in | std::ios::binary};
 
@@ -65,7 +65,7 @@ TEST_F(ModReaderTest, read_SamplesSequential_ReadsAllSamples) {
     }
 }
 
-TEST_F(ModReaderTest, read_SamplesNonsequential_ReadsAllSamples) {
+TEST_F(ModReaderTest, DISABLED_read_SamplesNonsequential_ReadsAllSamples) {
     // arrange
     std::ifstream in{"res/modules/6_samples_nonsequential.mod", std::ios::in | std::ios::binary};
 
@@ -95,7 +95,7 @@ TEST_F(ModReaderTest, read_SamplesNonsequential_ReadsAllSamples) {
     }
 }
 
-TEST_F(ModReaderTest, read_PatternSizeOfOne_ReadsAllPatterns) {
+TEST_F(ModReaderTest, DISABLED_read_PatternSizeOfOne_ReadsAllPatterns) {
     // arrange
     std::ifstream in{"res/modules/simple_title_and_name.mod", std::ios::in | std::ios::binary};
 
@@ -107,7 +107,7 @@ TEST_F(ModReaderTest, read_PatternSizeOfOne_ReadsAllPatterns) {
     // TODO: Verify first pattern is correct
 }
 
-TEST_F(ModReaderTest, read_PatternSizeOfSix_ReadsAllPatterns) {
+TEST_F(ModReaderTest, DISABLED_read_PatternSizeOfSix_ReadsAllPatterns) {
     // arrange
     std::ifstream in{"res/modules/sequence_123454321.mod", std::ios::in | std::ios::binary};
 
@@ -118,7 +118,7 @@ TEST_F(ModReaderTest, read_PatternSizeOfSix_ReadsAllPatterns) {
     ASSERT_EQ(6, module.patterns().size());
 }
 
-TEST_F(ModReaderTest, read_SequenceSizeOfOne_ReadsAllSamples) {
+TEST_F(ModReaderTest, DISABLED_read_SequenceSizeOfOne_ReadsAllSamples) {
     // arrange
     std::ifstream in{"res/modules/simple_title_and_name.mod", std::ios::in | std::ios::binary};
 
@@ -130,7 +130,7 @@ TEST_F(ModReaderTest, read_SequenceSizeOfOne_ReadsAllSamples) {
     EXPECT_EQ(0, module.get(0));
 }
 
-TEST_F(ModReaderTest, read_SequenceSizeOfEleven_ReadsAllSamples) {
+TEST_F(ModReaderTest, DISABLED_read_SequenceSizeOfEleven_ReadsAllSamples) {
     // arrange
     std::ifstream in{"res/modules/sequence_123454321.mod", std::ios::in | std::ios::binary};
 
@@ -145,7 +145,7 @@ TEST_F(ModReaderTest, read_SequenceSizeOfEleven_ReadsAllSamples) {
     }
 }
 
-TEST_F(ModReaderTest, read_SequenceSizeExceedsModuleLength_ThrowsException) {
+TEST_F(ModReaderTest, DISABLED_read_SequenceSizeExceedsModuleLength_ThrowsException) {
     // arrange
     std::ifstream in{"res/modules/simple_title_and_name.mod", std::ios::in | std::ios::binary};
 
@@ -156,7 +156,7 @@ TEST_F(ModReaderTest, read_SequenceSizeExceedsModuleLength_ThrowsException) {
     ASSERT_THROW({ module.get(1); }, std::invalid_argument);
 }
 
-TEST_F(ModReaderTest, read_ValidSignature_ReadsSignature) {
+TEST_F(ModReaderTest, DISABLED_read_ValidSignature_ReadsSignature) {
     // arrange
     std::ifstream in{"res/modules/sequence_123454321.mod", std::ios::in | std::ios::binary};
 
@@ -168,7 +168,7 @@ TEST_F(ModReaderTest, read_ValidSignature_ReadsSignature) {
 }
 
 
-TEST_F(ModReaderTest, read_InvalidStreamFileDoesNotExist_ThrowsException) {
+TEST_F(ModReaderTest, DISABLED_read_InvalidStreamFileDoesNotExist_ThrowsException) {
     // arrange
     std::ifstream in{"this_file_does_not_exist.mod", std::ios::in | std::ios::binary};
 

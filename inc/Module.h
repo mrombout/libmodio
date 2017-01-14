@@ -100,7 +100,7 @@ namespace modio {
          * \param index  sample index
          * \param sample sample to set
          */
-        void setSample(unsigned int index, const Sample &sample);
+        void setSample(const unsigned int index, const Sample &sample);
 
         /**
          * \brief Returns the patterns of this module

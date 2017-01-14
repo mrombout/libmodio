@@ -9,7 +9,7 @@ protected:
     modio::ModWriter modWriter;
 };
 
-TEST_P(ModReadWriteTest, ReadWrite_IsIdentical) {
+TEST_P(ModReadWriteTest, DISABLED_ReadWrite_IsIdentical) {
     // arrange
     std::string fileName{GetParam()};
     std::ifstream in{fileName};

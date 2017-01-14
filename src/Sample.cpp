@@ -71,7 +71,7 @@ namespace modio {
     void Sample::setRepeatLength(unsigned int repeatLength) {
         // TODO: OpenMPT seems to enforce that length my not exceed (start + 16)
         if(repeatLength > length() + 1)
-            throw std::invalid_argument("Sample repeat length (which is " + std::to_string(repeatLength) + ") must not be larger than sample length (which is " + std::to_string(length()) + ").");
+            throw std::invalid_argument("Sample repeat length (which is '" + std::to_string(repeatLength) + "') must not be larger than sample length (which is '" + std::to_string(length()) + "').");
         mRepeatLength = repeatLength;
     }
 
@@ -80,8 +80,8 @@ namespace modio {
     }
 
     void Sample::setData(std::vector<unsigned char> data) {
-        if(data.size() != length() * 2)
-            throw std::invalid_argument("Sample data length (which is" + std::to_string(data.size()) + ") must be exactly that of length in bytes (which is " + std::to_string(length() * 2) + ").");
+//        if(data.size() != length() * 2)
+//            throw std::invalid_argument("Sample data length (which is '" + std::to_string(data.size()) + "') must be exactly that of `length` in bytes (which is '" + std::to_string(length() * 2) + "').");
         mData = data;
     }
 

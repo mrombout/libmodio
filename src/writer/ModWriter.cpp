@@ -38,7 +38,7 @@ namespace modio {
         // (n * x ) write sample data
         for(const Sample &sample : module.samples()) {
             auto sampleData = sample.data();
-            unsigned int sampleLength = sample.length() * 2;
+            unsigned long sampleLength = sample.length() * 2;
 
             for(int i = 0 ; i < sampleLength; ++i)
                 out.put(sampleData[i]);
@@ -60,7 +60,7 @@ namespace modio {
         out.write(sampleName.c_str(), sampleName.length());
 
         // (2 bytes) write sample length in words
-        unsigned int sampleLength{sample.length()};
+        unsigned long sampleLength{sample.length()};
         out.put(static_cast<char>(sampleLength >> 8));
         out.put(static_cast<char>(sampleLength));
 

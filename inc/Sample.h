@@ -57,7 +57,7 @@ namespace modio {
          *
          * \returns length of this sample in words (1 word = 2 bytes)
          */
-        unsigned int length() const;
+        unsigned long length() const;
 
         /**
          * \brief Sets the volume of this sample, may not exceed 64

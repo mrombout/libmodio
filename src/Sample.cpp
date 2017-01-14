@@ -43,7 +43,7 @@ namespace modio {
         mData.resize(length * 2);
     }
 
-    unsigned int Sample::length() const {
+    unsigned long Sample::length() const {
         return mData.size() / 2;
     }
 

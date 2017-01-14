@@ -69,8 +69,7 @@ TEST_F(ModWriterTest, write_OneSample_WritesMaxSampleHeaders) {
     // arrange
     modio::Module module;
 
-    modio::Sample sample{"SAMPLE01", 64, 0, 32};
-    sample.setData(std::vector<unsigned char>(32, 0xFF));
+    modio::Sample sample{"SAMPLE01", 64, 0, 32, {32, 0xFF}};
 
     module.setSample(0, sample);
 
@@ -103,8 +102,7 @@ TEST_F(ModWriterTest, write_TwoEmptySamplesThirdFull_WritesMaxSampleHeaders) {
     // arrange
     modio::Module module;
 
-    modio::Sample sample{"SAMPLE03", 64, 0, 32};
-    sample.setData(std::vector<unsigned char>(32, static_cast<unsigned char>(0xFF)));
+    modio::Sample sample{"SAMPLE03", 64, 0, 32, {32, static_cast<unsigned char>(0xFF)}};
 
     module.setSample(2, sample);
 

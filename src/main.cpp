@@ -62,15 +62,15 @@ int main() {
 
     // data repeated for each pattern
     for(int i = 0; i < 64; ++i) {
-        char ch1[]{0xD6, 0x11, 0x00, 0x00};
-        char ch2[]{0xBE, 0x12, 0x00, 0x00};
-        char ch3[]{0xAA, 0x13, 0x00, 0x00};
-        char ch4[]{0xA0, 0x14, 0x00, 0x00};
+        unsigned char ch1[]{0xD6, 0x11, 0x00, 0x00};
+        unsigned char ch2[]{0xBE, 0x12, 0x00, 0x00};
+        unsigned char ch3[]{0xAA, 0x13, 0x00, 0x00};
+        unsigned char ch4[]{0xA0, 0x14, 0x00, 0x00};
 
-        os.write(ch1, sizeof(ch1));
-        os.write(ch2, sizeof(ch2));
-        os.write(ch3, sizeof(ch3));
-        os.write(ch4, sizeof(ch4));
+        os.write(reinterpret_cast<char*>(ch1), sizeof(ch1));
+        os.write(reinterpret_cast<char*>(ch2), sizeof(ch2));
+        os.write(reinterpret_cast<char*>(ch3), sizeof(ch3));
+        os.write(reinterpret_cast<char*>(ch4), sizeof(ch4));
     }
 
     // (1 byte) remove last byte from pattern (???)

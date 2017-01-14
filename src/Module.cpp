@@ -1,4 +1,4 @@
-#include <c++/stdexcept>
+#include <stdexcept>
 #include "Module.h"
 
 namespace modio {

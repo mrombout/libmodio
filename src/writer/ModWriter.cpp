@@ -1,5 +1,5 @@
 #include <iterator>
-#include <c++/iostream>
+#include <iostream>
 #include "writer/ModWriter.h"
 
 namespace modio {

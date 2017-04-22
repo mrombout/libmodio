@@ -1,6 +1,9 @@
 language: cpp
-compiler:
-    - clang
-    - gcc
+matrix:
+    include:
+        - os: linux
+          dist: trusty
+          sudo: required
+        - os: osx
 script:
         mkdir build && cd build && cmake .. && cmake --build .

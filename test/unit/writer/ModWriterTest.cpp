@@ -18,8 +18,8 @@ TEST_F(ModWriterTest, write_FullName__WritesFullName) {
     oss.seekg(0, oss.beg);
 
     char buffer[21];
-    oss.read(buffer, sizeof(buffer) - 1);
-    std::string moduleName{buffer};
+    oss.read(buffer, sizeof(buffer));
+    std::string moduleName(buffer);
 
     EXPECT_EQ("ABCDEFGHIJKLMNOPQRST", moduleName);
 }

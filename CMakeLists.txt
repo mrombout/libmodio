@@ -1,7 +1,17 @@
-cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.2.2 FATAL_ERROR)
 project(libmodio VERSION 0.0.1 LANGUAGES CXX C)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+if(MSVC)
+	# NOTE: Fix for https://airfang.wordpress.com/2008/10/04/gtest-cmake-visual-studio/
+	set(CMAKE_CXX_FLAGS_DEBUG "/MTd /Zi")
+endif()
+
+include(CTest)
+enable_testing()
 
 set(SOURCE_FILES
     src/main.cpp

@@ -1,6 +1,6 @@
 # testing
 set(TEST_FILES
-        integration/ModReadWriteTest.cpp
+    integration/ModReadWriteTest.cpp
     unit/reader/ModReaderTest.cpp
     unit/writer/ModWriterTest.cpp
     unit/ChannelTest.cpp
@@ -20,5 +20,4 @@ target_link_libraries(testmodio
     gtest_main
     gmock)
 
-enable_testing()
 add_test(AllModioTests testmodio)

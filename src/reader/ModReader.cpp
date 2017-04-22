@@ -47,7 +47,7 @@ namespace modio {
             if(sample.length())
                 continue;
 
-            char sampleData[sample.length()];
+            char *sampleData = new char[sample.length()];
             in.read(sampleData, sizeof(sampleData));
         }
 
@@ -91,7 +91,7 @@ namespace modio {
         sample.setRepeatLength(sampleRepeatLength);
     }
 
-    void ModReader::readPatterns(std::istream &in, Module &module, int numPatterns) const {
+    void ModReader::readPatterns(std::istream &in, Module &module, const int numPatterns) const {
         // TODO: Determine channel count by signature/configuration
         unsigned int channelCount = 4;
         for(unsigned int i = 0; i < numPatterns; ++i) {
@@ -103,7 +103,7 @@ namespace modio {
         }
     }
 
-    void ModReader::readPattern(std::istream &in, Pattern &pattern, unsigned int channelCount) const {
+    void ModReader::readPattern(std::istream &in, Pattern &pattern, const unsigned int channelCount) const {
         for(unsigned int j = 0; j < 64; ++j) {
             for(unsigned int i = 0; i < channelCount; ++i) {
                 uint32_t cell = readBigEndian(in, 4);
@@ -123,15 +123,15 @@ namespace modio {
         }
     }
 
-    std::string ModReader::readString(std::istream &in, int size) const {
-        char buffer[size + 1];
+    std::string ModReader::readString(std::istream &in, const int size) const {
+        char *buffer = new char[size + 1];
         in.read(buffer, size);
         buffer[size] = '\0';
 
         return std::string(buffer);
     }
 
-    unsigned int ModReader::readBigEndian(std::istream &in, int bytes) const {
+    unsigned int ModReader::readBigEndian(std::istream &in, const int bytes) const {
         unsigned int result = 0;
 
         for(int i = bytes -1; i >= 0; --i)

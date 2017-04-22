@@ -29,8 +29,8 @@ TEST_P(ModReadWriteTest, DISABLED_ReadWrite_IsIdentical) {
     in.seekg(0, in.beg);
     out.seekg(0, out.beg);
 
-    char inBuffer[inSize];
-    char outBuffer[outSize];
+    char *inBuffer = new char[inSize];
+    char *outBuffer = new char[outSize];
     in.read(inBuffer, sizeof(inBuffer));
     out.read(outBuffer, sizeof(outBuffer));
 

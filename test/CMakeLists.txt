@@ -1,6 +1,6 @@
 # testing
 set(TEST_FILES
-        integration/ModReadWriteTest.cpp
+    integration/ModReadWriteTest.cpp
     unit/reader/ModReaderTest.cpp
     unit/writer/ModWriterTest.cpp
     unit/ChannelTest.cpp

@@ -7,7 +7,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 if(MSVC)
 	# NOTE: Fix for https://airfang.wordpress.com/2008/10/04/gtest-cmake-visual-studio/
-	set(CMAKE_CXX_FLAGS_DEBUG "/MTd")
+	set(CMAKE_CXX_FLAGS_DEBUG "/MTd /Zi")
 endif()
 
 include(CTest)

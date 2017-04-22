@@ -5,6 +5,14 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+if(MSVC)
+	# NOTE: Fix for https://airfang.wordpress.com/2008/10/04/gtest-cmake-visual-studio/
+	set(CMAKE_CXX_FLAGS_DEBUG "/MTd")
+endif()
+
+include(CTest)
+enable_testing()
+
 set(SOURCE_FILES
     src/main.cpp
 

@@ -20,5 +20,4 @@ target_link_libraries(testmodio
     gtest_main
     gmock)
 
-enable_testing()
 add_test(AllModioTests testmodio)
